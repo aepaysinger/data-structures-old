@@ -3,7 +3,7 @@ class LinkedList:
         self.head = None  # node with a pointer(next) to the next node
         self._length = 0
 
-        for value in values[::-1]:
+        for value in values:
             self.head = Node(value, self.head)
             self._length += 1
 
@@ -82,6 +82,15 @@ class LinkedList:
 
         values = tuple(values)
         return str(values)
+
+    def __len__(self):
+        return self._length
+    
+
+    def __str__(self):
+        return self.display()
+        
+    
 
 
 class Node:

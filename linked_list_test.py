@@ -1,4 +1,6 @@
+import io
 import pytest
+import sys
 
 from linked_list import LinkedList, Node
 
@@ -14,12 +16,12 @@ def test_linked_list_init():
     ), f"If the LinkedList is empty your value should be None, you got {ll.head.next}"
 
     ll = LinkedList([1, 2, 3])
-    assert ll.head.value == 1, f"The first value should be 1, you got: {ll.head.value}"
+    assert ll.head.value == 3, f"The first value should be 1, you got: {ll.head.value}"
     assert (
         ll.head.next.value == 2
     ), f"The second value should be 2, you got: {ll.head.next.value}"
     assert (
-        ll.head.next.next.value == 3
+        ll.head.next.next.value == 1
     ), f"The third value should be 3, you got: {ll.head.next.next.value}"
     assert (
         ll.head.next.next.next is None
@@ -28,24 +30,24 @@ def test_linked_list_init():
 
 def test_linked_list_push():
     ll = LinkedList([1, 2, 3])
-    assert ll.head.value == 1
+    assert ll.head.value == 3
     assert ll.head.next.value == 2
-    assert ll.head.next.next.value == 3
+    assert ll.head.next.next.value == 1
     assert ll.head.next.next.next is None
 
     ll.push(4)
     assert ll.head.value == 4, f"Returned {ll.head.value} instead of 4, when you push a value it goes at the front of the list"
-    assert ll.head.next.value == 1
+    assert ll.head.next.value == 3
     assert ll.head.next.next.value == 2
-    assert ll.head.next.next.next.value == 3
+    assert ll.head.next.next.next.value == 1
     assert ll.head.next.next.next.next is None
 
 
 def test_pop_linked_list():
     ll = LinkedList([1, 2, 3])
-    assert ll.head.value == 1
+    assert ll.head.value == 3
     assert ll.head.next.value == 2
-    assert ll.head.next.next.value == 3
+    assert ll.head.next.next.value == 1
     assert ll.head.next.next.next is None
 
 
@@ -55,8 +57,8 @@ def test_linked_list_pop_first_value():
     assert (
         ll.head.value == 2
     ), f"Returned {ll.head.value} instead of 2, The first value is deleted, the second value becomes the first"
-    assert ll.head.next.value == 3, "Returned {ll.head.next.value} instead of 3"
-    assert actual == 1, "The valu that is being poped is 1 not {actual}"
+    assert ll.head.next.value == 1, "Returned {ll.head.next.value} instead of 3"
+    assert actual == 3, "The value that is being poped is 1 not {actual}"
 
 
 def test_linked_list_pop_4():
@@ -79,12 +81,12 @@ def test_linked_list_size():
 
     ll.pop()
     assert ll.size() == 3, f"the size of the list is 3, you got {actual}"
-    assert ll.head.value == 1, f"the first value is 1, you got {ll.head.value}"
+    assert ll.head.value == 3, f"the first value is 1, you got {ll.head.value}"
 
     ll.remove(ll.head.next)
     assert ll.size() == 2
-    assert ll.head.value == 1
-    assert ll.head.next.value == 3
+    assert ll.head.value == 3
+    assert ll.head.next.value == 1
 
 
 def test_linked_list_search_with_3():
@@ -107,8 +109,8 @@ def test_linked_list_remove():
     ll = LinkedList([1, 2, 3])
     ll.remove(ll.head.next)
 
-    assert ll.head.value == 1, f"the first vaue is 1, not {ll.head.value}"
-    assert ll.head.next.value == 3, f"the second value is 3, not {ll.head.next.value}"
+    assert ll.head.value == 3, f"the first vaue is 3, not {ll.head.value}"
+    assert ll.head.next.value == 1, f"the second value is 1, not {ll.head.next.value}"
 
 
 def test_linked_list_remove_2():
@@ -126,14 +128,14 @@ def test_linked_list_remove_last():
     ll = LinkedList([1, 2])
     ll.remove(ll.head.next)
 
-    assert ll.head.value == 1
+    assert ll.head.value == 2
     assert ll.head.next == None
 
 
 def test_linked_list_remove_first():
     ll = LinkedList([1, 2])
     ll.remove(ll.head)
-    assert ll.head.value == 2
+    assert ll.head.value == 1
     assert ll.head.next == None
 
 
@@ -143,11 +145,27 @@ def test_linked_list_remove_not_present():
     with pytest.raises(ValueError) as exc_info:
         ll.remove(LinkedList(["a", "b"]).head)
         assert exc_info.value.args[0] == "Node not present"
-    assert ll.head.value == 1
-    assert ll.head.next.value == 2
+    assert ll.head.value == 2
+    assert ll.head.next.value == 1
 
 
 def test_linked_list_display():
     ll = LinkedList([1, "a", 3])
     unicode_string = ll.display()
-    assert unicode_string == "(1, 'a', 3)"
+    assert unicode_string == "(3, 'a', 1)"
+
+
+def test_linked_list_len():
+    ll = LinkedList([1, 2, 3])
+    
+    assert len(ll) == 3
+
+
+def test_linked_list_print():
+    capturedOutput = io.StringIO()                  
+    sys.stdout = capturedOutput                     
+    print(LinkedList([3, 5, 1]))                                  
+    sys.stdout = sys.__stdout__ 
+    
+    
+    assert capturedOutput.getvalue() == "(1, 5, 3)\n", f"Printed: {capturedOutput.getvalue()}, '(1, 5, 3)\n'"
