@@ -36,7 +36,9 @@ def test_linked_list_push():
     assert ll.head.next.next.next is None
 
     ll.push(4)
-    assert ll.head.value == 4, f"Returned {ll.head.value} instead of 4, when you push a value it goes at the front of the list"
+    assert (
+        ll.head.value == 4
+    ), f"Returned {ll.head.value} instead of 4, when you push a value it goes at the front of the list"
     assert ll.head.next.value == 3
     assert ll.head.next.next.value == 2
     assert ll.head.next.next.next.value == 1
@@ -71,7 +73,7 @@ def test_linked_list_pop_4():
         assert exc_info.value.args[0] == "There are no values to return"
 
 
-def test_linked_list_size(): 
+def test_linked_list_size():
     ll = LinkedList([1, 2, 3])
     actual = ll.size()
     assert actual == 3, f"The size of the list is 3, you got {actual}"
@@ -93,7 +95,9 @@ def test_linked_list_search_with_3():
     ll = LinkedList([1, 2, 3])
     actual = ll.search(2)
     expected_value = 2
-    assert actual.value == expected_value, f"the value is {expected_value} you got {actual.value}"
+    assert (
+        actual.value == expected_value
+    ), f"the value is {expected_value} you got {actual.value}"
     assert actual == ll.head.next
     assert actual == Node(expected_value, None)
 
@@ -157,15 +161,16 @@ def test_linked_list_display():
 
 def test_linked_list_len():
     ll = LinkedList([1, 2, 3])
-    
+
     assert len(ll) == 3
 
 
 def test_linked_list_print():
-    capturedOutput = io.StringIO()                  
-    sys.stdout = capturedOutput                     
-    print(LinkedList([3, 5, 1]))                                  
-    sys.stdout = sys.__stdout__ 
-    
-    
-    assert capturedOutput.getvalue() == "(1, 5, 3)\n", f"Printed: {capturedOutput.getvalue()}, '(1, 5, 3)\n'"
+    capturedOutput = io.StringIO()
+    sys.stdout = capturedOutput
+    print(LinkedList([3, 5, 1]))
+    sys.stdout = sys.__stdout__
+
+    assert (
+        capturedOutput.getvalue() == "(1, 5, 3)\n"
+    ), f"Printed: {capturedOutput.getvalue()}, '(1, 5, 3)\n'"

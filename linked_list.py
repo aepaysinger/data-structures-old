@@ -30,6 +30,7 @@ class LinkedList:
         """
         size() will return the length of the list
         """
+        # this is another way to check the length if i didnt have the _length method
         # count = 0
         # current = self.head
         # while current:
@@ -85,12 +86,9 @@ class LinkedList:
 
     def __len__(self):
         return self._length
-    
 
     def __str__(self):
         return self.display()
-        
-    
 
 
 class Node:

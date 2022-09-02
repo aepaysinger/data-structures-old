@@ -1,6 +1,5 @@
 # data-structures
 ## LinkedList
----
   * push(val): will insert the value ‘val’ at the head of the list
   * pop(): will pop the first value off the head of the list and return it. Raises an exception with an appropriate message if there are no values to return.
   * size(): will return the length of the list
