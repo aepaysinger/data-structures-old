@@ -1,5 +1,5 @@
 class LinkedList:
-    def __init__(self, values):
+    def __init__(self, values=None):
         self.head = None  # node with a pointer(next) to the next node
         self._length = 0
 
