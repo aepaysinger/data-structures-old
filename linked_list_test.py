@@ -1,5 +1,6 @@
 import io
 import pytest
+
 import sys
 
 from linked_list import LinkedList, Node
