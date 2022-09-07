@@ -3,9 +3,12 @@ class LinkedList:
         self.head = None  # node with a pointer(next) to the next node
         self._length = 0
 
-        for value in values:
-            self.head = Node(value, self.head)
-            self._length += 1
+        if values == None:
+            self.head is None
+        else:
+            for value in values:
+                self.head = Node(value, self.head)
+                self._length += 1
 
     def push(self, value):
         """

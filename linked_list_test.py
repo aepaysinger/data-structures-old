@@ -175,3 +175,9 @@ def test_linked_list_print():
     assert (
         capturedOutput.getvalue() == "(1, 5, 3)\n"
     ), f"Printed: {capturedOutput.getvalue()}, '(1, 5, 3)\n'"
+
+
+def test_create_empty_linked_list():
+    ll = LinkedList()
+    assert len(ll) == 0
+    assert ll.head is None
