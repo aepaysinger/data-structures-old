@@ -3,9 +3,7 @@ class LinkedList:
         self.head = None  # node with a pointer(next) to the next node
         self._length = 0
 
-        if values == None:
-            self.head = None
-        else:
+        if values:
             for value in values:
                 self.head = Node(value, self.head)
                 self._length += 1
