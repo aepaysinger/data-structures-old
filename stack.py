@@ -24,4 +24,3 @@ class Stack:
 
     def __len__(self):
         return self.linked_list.size()
-

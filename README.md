@@ -8,3 +8,6 @@
   * display() will return a unicode string representing the list as if it were a Python tuple literal: “(12, ‘sam’, 37, ‘tango’)”
   * len(the_list): returns the size of the list
   * print(the_list): returns what the display() method returns
+  ## Stack
+  * push(value) - Adds a value to the stack. The parameter is the value to be added to the stack.
+  * pop() - Removes a value from the stack and returns that value. If the stack is empty, attempts to call pop should raise an appropriate Python exception with message.

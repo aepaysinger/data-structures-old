@@ -24,5 +24,11 @@ def test_pop():
     with pytest.raises(ValueError) as exc_info:
         sl.pop()
         assert exc_info.value.args[0] == "There are no values to remove"
-    assert len(sl) == 0    
+    assert len(sl) == 0   
+    
+
+def test_create_empty_stack_list():
+    sl = Stack()
+    assert len(sl) == 0
+    assert sl.linked_list.head is None
     
