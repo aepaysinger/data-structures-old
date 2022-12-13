@@ -83,8 +83,9 @@ class DoubleLinkedList:
             if node.value == value:
                 node.next.previous = node.previous
                 node.previous.next = node.next
-        if node.value != value:
-            raise ValueError("number not in list")
+            else:
+            # elif node.value != value:
+                raise ValueError("number not in list")
 
         self._length -= 1
 
