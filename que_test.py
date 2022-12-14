@@ -13,23 +13,27 @@ def test_que_enqueue():
 
 def test_dequeue():
     que = Que_([3, 6, 4])
-    que.dequeue()
-
-    assert que.items == [6, 4]
+    
+    assert que.dequeue() == 3
 
     que.dequeue()
     que.dequeue()
 
     with pytest.raises(ValueError) as exc_info:
         que.dequeue()
-        assert exc_info.value.args[0] == "Empty List"
+        assert exc_info.value.args[0] == "Empty Stack"
 
 
 def test_peek():
     que = Que_([9, 4, 2])
 
-    assert que.peek() == 4
+    assert que.peek() == 9
 
+
+def test_peek_empty():
+    que = Que_([])
+
+    assert que.peek() == None   
 
 def test_size():
     que = Que_([3, 6, 3, 4, 1])
@@ -43,3 +47,9 @@ def test_size():
     que.dequeue()
 
     assert que.size() == 0
+
+
+def test_len():
+    que = Que_([3, 6, 1, 4])
+
+    assert len(que) == 4

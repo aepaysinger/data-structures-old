@@ -9,16 +9,19 @@ class Que_:
         self.items.append(value)
 
     def dequeue(self):
-        if len(self.items) > 0:
-            self.items.pop(0)
-        else:
-            raise ValueError("Empty List")
-
+        try:
+            return self.items.pop(0)
+        except IndexError:
+            raise ValueError("Empty Stack")
+        
     def peek(self):
-        if len(self.items) >= 2:
-            return self.items[1]
-        else:
+        try:
+            return self.items[0]
+        except IndexError:
             return None
 
     def size(self):
+        return len(self.items)
+
+    def __len__(self):
         return len(self.items)
