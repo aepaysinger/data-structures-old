@@ -10,6 +10,7 @@ def test_que_enqueue():
 
     assert que.items == [1, 2, 3, 4]
 
+
 def test_dequeue():
     que = Que_([3, 6, 4])
     que.dequeue()
@@ -23,7 +24,7 @@ def test_dequeue():
         que.dequeue()
         assert exc_info.value.args[0] == "Empty List"
 
- 
+
 def test_peek():
     que = Que_([9, 4, 2])
 
