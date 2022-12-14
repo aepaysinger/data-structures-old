@@ -1,27 +1,29 @@
-from linked_list import LinkedList
-
-
 class Que_():
-    def __init__(self, items):
-        self.items = items
-
+    def __init__(self, values=None):
+        self.items = []
+        if values:
+            for value in values:
+                self.items.append(value)
 
 
     def enqueue(self, value):
         self.items.append(value)
 
     
-    # def dequeue(self):
-    #     self.linked_list.pop()
+    def dequeue(self):
+        if len(self.items) > 0:
+            self.items.pop(0)
+        else:
+            raise ValueError("Empty List")
 
     
-    # def peek(self):
-    #     if len(self.linked_list) >= 2:
-    #         return self.linked_list.head.next.value
-    #     else:
-    #         return None
+    def peek(self):
+        if len(self.items) >= 2:
+            return self.items[1]
+        else:
+            return None
 
     
-    # def size(self):
-    #     return len(self.linked_list)
+    def size(self):
+        return len(self.items)
 
