@@ -122,13 +122,32 @@ def test_dll_remove():
     assert dll.head.previous is None
     assert len(dll) == 2
 
+def test_dll_remove_first_from_3():
+    dll = DoubleLinkedList([4,8,1])
+    dll.remove(1)
+
+    assert dll.head.value == 8
+    assert dll.head.previous is None
+    assert dll.head.next.value == 4
+    assert dll.head.next.next is None
+
+
+def test_dll_remove_last_from_3():
+    dll = DoubleLinkedList([4,8,1])
+    dll.remove(4)
+
+    assert dll.head.value == 1
+    assert dll.head.previous is None
+    assert dll.head.next.value == 8
+    assert dll.head.next.next is None    
+
 
 def test_dll_remove_not_in_list():
     dll = DoubleLinkedList([4, 7, 5])
 
     with pytest.raises(ValueError) as exc_info:
         dll.remove(3)
-        assert str(exc_info.value) == "number not in list"
+    assert str(exc_info.value) == "number not in list"
 
     assert dll.head.value == 5
     assert dll.head.next.value == 7
