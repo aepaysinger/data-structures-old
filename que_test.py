@@ -20,7 +20,7 @@ def test_dequeue():
 
     with pytest.raises(ValueError) as exc_info:
         que.dequeue()
-        assert exc_info.value.args[0] == "Empty Stack"
+    assert exc_info.value.args[0] == "Empty Stack"
 
 
 def test_peek():
