@@ -1,6 +1,5 @@
 import pytest
 
-
 from que_ import Que_
 
 
@@ -13,7 +12,7 @@ def test_que_enqueue():
 
 def test_dequeue():
     que = Que_([3, 6, 4])
-    
+
     assert que.dequeue() == 3
 
     que.dequeue()
@@ -33,7 +32,8 @@ def test_peek():
 def test_peek_empty():
     que = Que_([])
 
-    assert que.peek() == None   
+    assert que.peek() == None
+
 
 def test_size():
     que = Que_([3, 6, 3, 4, 1])

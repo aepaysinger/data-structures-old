@@ -13,7 +13,7 @@ class Que_:
             return self.items.pop(0)
         except IndexError:
             raise ValueError("Empty Stack")
-        
+
     def peek(self):
         try:
             return self.items[0]
