@@ -11,6 +11,13 @@
   ## Stack
   * push(value) - Adds a value to the stack. The parameter is the value to be added to the stack.
   * pop() - Removes a value from the stack and returns that value. If the stack is empty, attempts to call pop should raise an appropriate Python exception with message.
+  ## Doubly-Linked List
+  * push(val) will insert the value val at the head of the list
+  * append(val) will append the value val at the tail of the list
+  * pop() will pop the first value off the head of the list and return it. Raises an exception with an appropriate message if there are no values to return.
+  * shift() will remove the last value from the tail of the list and return it. Raises an exception with an appropriate message if there are no values to return.
+  * remove(val) will remove the first instance of val found in the list, starting from the head. If val is not present, it will raise an appropriate Python exception.
+  * len() will return the size of the list.
 ### Que_
   * enqueue(val): adds value to the queue
   * dequeue(): removes the correct item from the queue and returns its value (should raise an error if the queue is empty)
