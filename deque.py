@@ -13,13 +13,13 @@ class Deque:
 
     def pop(self):
         if len(self.items) == 0:
-            raise IndexError("There are not items to pop.")
+            raise ValueError("There are not items to pop.")
         else:
             return self.items.pop()
 
     def popleft(self):
         if len(self.items) == 0:
-            raise IndexError("There are not items to popleft.")
+            raise ValueError("There are not items to popleft.")
         else:
             return self.items.pop(0)
 

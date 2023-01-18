@@ -26,7 +26,7 @@ def test_deque_pop():
     deque.pop()
     deque.pop()
 
-    with pytest.raises(IndexError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         deque.pop()
     assert str(exc_info.value) == "There are not items to pop."
 
@@ -39,7 +39,7 @@ def test_deque_popleft():
     deque.popleft()
     deque.popleft()
 
-    with pytest.raises(IndexError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         deque.popleft()
     assert str(exc_info.value) == "There are not items to popleft."
 
