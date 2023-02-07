@@ -1,6 +1,3 @@
-# _for private methods
-
-
 class MinHeap:
     def __init__(self, max_num_elements, values=None):
         self.storage = []
@@ -30,18 +27,15 @@ class MinHeap:
         return self._find_right_child_index(index) < len(self.storage)
 
     def _parent_location(self, index):
-        if index == 0:
-            raise ValueError("Root Element")
+
         return self.storage[self._find_parent_index(index)]
 
     def _left_child_location(self, index):
-        if self._find_left_child_index(index) <= len(self.storage) and index % 2 != 0:
-            raise ValueError("Has no left child")
+
         return self.storage[self._find_left_child_index(index)]
 
     def _right_child_location(self, index):
-        if self._find_right_child_index(index) >= len(self.storage):
-            raise ValueError("Has no right child")
+
         return self.storage[self._find_right_child_index(index)]
 
     def _full_heap(self):
@@ -59,8 +53,8 @@ class MinHeap:
             self.storage.append(value)
             self._heapify_up()
 
-    def _heapify_up(self):  # [15, 10]
-        index = len(self.storage) - 1  # 1
+    def _heapify_up(self):
+        index = len(self.storage) - 1
         while (
             self._has_parent(index)
             and self._parent_location(index) > self.storage[index]
@@ -73,7 +67,7 @@ class MinHeap:
             raise ValueError("Empty heap")
         else:
             self.storage[0] = self.storage[-1]
-            self.storage = self.storage[0:-1]
+            del self.storage[-1]
             self._heapify_up()
 
 

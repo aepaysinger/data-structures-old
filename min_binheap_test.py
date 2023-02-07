@@ -57,12 +57,6 @@ def test_minheap_has_right_child():
 def test_parent_location():
     min_heap = MinHeap(4, [15, 10, 5])
 
-    assert min_heap.storage[0] == 5
-
-    with pytest.raises(ValueError) as exc_info:
-        min_heap._parent_location(0)
-    assert exc_info.value.args[0] == "Root Element"
-
     assert min_heap._parent_location(1) == 5
 
 
@@ -73,10 +67,6 @@ def test_left_child_location():
 
     assert min_heap._left_child_location(0) == 10
 
-    with pytest.raises(ValueError) as exc_info:
-        min_heap._left_child_location(1)
-    assert exc_info.value.args[0] == "Has no left child"
-
 
 def test_right_child_location():
     min_heap = MinHeap(3, [15, 10, 5])
@@ -86,14 +76,6 @@ def test_right_child_location():
     assert min_heap.storage == [5, 10, 15]
 
     assert min_heap._right_child_location(0) == 15
-
-    with pytest.raises(ValueError) as exc_info:
-        min_heap._right_child_location(1)
-    assert exc_info.value.args[0] == "Has no right child"
-
-    with pytest.raises(ValueError) as exc_info:
-        min_heap._right_child_location(2)
-    assert exc_info.value.args[0] == "Has no right child"
 
 
 def test_full_heap():
