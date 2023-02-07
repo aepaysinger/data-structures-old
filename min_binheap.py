@@ -1,12 +1,13 @@
 # _for private methods
 
+
 class MinHeap:
     def __init__(self, max_num_elements, values=None):
         self.storage = []
-        self.max_num_elements = max_num_elements 
+        self.max_num_elements = max_num_elements
         if values:
             for value in values:
-                self.storage.append(value) 
+                self.storage.append(value)
             self.size = len(self.storage)
             self._heapify_up()
 
@@ -20,8 +21,8 @@ class MinHeap:
         return (2 * index) + 2
 
     def _has_parent(self, index):
-        return self._find_parent_index(index) >= 0 
-    
+        return self._find_parent_index(index) >= 0
+
     def _has_left_child(self, index):
         return self._find_left_child_index(index) < len(self.storage)
 
@@ -45,7 +46,7 @@ class MinHeap:
 
     def _full_heap(self):
         return len(self.storage) == self.max_num_elements
-    
+
     def _swap(self, index1, index2):
         spot_holder = self.storage[index1]
         self.storage[index1] = self.storage[index2]
@@ -58,9 +59,12 @@ class MinHeap:
             self.storage.append(value)
             self._heapify_up()
 
-    def _heapify_up(self): #[15, 10]
-        index = len(self.storage) - 1 #1
-        while self._has_parent(index) and self._parent_location(index) > self.storage[index]:
+    def _heapify_up(self):  # [15, 10]
+        index = len(self.storage) - 1  # 1
+        while (
+            self._has_parent(index)
+            and self._parent_location(index) > self.storage[index]
+        ):
             self._swap(self._find_parent_index(index), index)
             index = self._find_parent_index(index)
 
@@ -71,11 +75,11 @@ class MinHeap:
             self.storage[0] = self.storage[-1]
             self.storage = self.storage[0:-1]
             self._heapify_up()
-        
+
 
 # filled left to right
 # parent node can have 2 or less children
-# all levels must be filled before moving on 
+# all levels must be filled before moving on
 # parent key must be smaller that its children nodes (smallest to largest)
 # root node is always the smallest
 
