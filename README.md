@@ -24,6 +24,9 @@
   * dequeue(): removes the correct item from the queue and returns its value (should raise an error if the queue is empty)
   * peek(): returns the next value in the queue without dequeueing it. If the queue is empty, returns None
   * size(): return the size of the queue. Should return 0 if the queue is empty.
+### Binary Heap - min heap
+  * push(val): puts a new value into the heap, maintaining the heap property.
+  * pop(): removes the “top” value in the heap, maintaining the heap property.
 ## Deque
   * append(val): adds value to the end of the deque
   * appendleft(val): adds a value to the front of the deque
@@ -32,4 +35,3 @@
   * peek(): returns the next value that would be returned by pop but leaves the value in the deque (returns None if the deque is empty)
   * peekleft(): returns the next value that would be returned by popleft but leaves the value in the deque (returns None if the deque is empty)
   * size(): returns the count of items in the queue (returns 0 if the queue is empty)
-
