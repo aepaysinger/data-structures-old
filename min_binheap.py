@@ -69,14 +69,3 @@ class MinHeap:
             self.storage[0] = self.storage[-1]
             del self.storage[-1]
             self._heapify_up()
-
-
-# filled left to right
-# parent node can have 2 or less children
-# all levels must be filled before moving on
-# parent key must be smaller that its children nodes (smallest to largest)
-# root node is always the smallest
-
-# PARENT INDEX: (index - 1)//2
-# LEFT CHILD INDEX: 2 * index + 1
-# RIGHT CHILD INDEX: 2 * index + 2
