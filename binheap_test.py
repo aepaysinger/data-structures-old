@@ -26,7 +26,7 @@ def test_min_heap_has():
     assert min_heap._has_left_child(0) == True
     assert min_heap._has_right_child(2) == False
     assert min_heap._has_parent(3) == True
-    
+
 
 def test_min_heap_location():
     min_heap = BinHeap(5, "min", [8, 1, 5, 3, 9])
@@ -49,7 +49,7 @@ def test_min_heap_push():
 
     with pytest.raises(ValueError) as exc_info:
         min_heap.push(7)
-    assert exc_info.value.args[0] == "Full heap" 
+    assert exc_info.value.args[0] == "Full heap"
 
 
 def test_min_heap_pop():
@@ -111,7 +111,7 @@ def test_max_heap_push():
 
     with pytest.raises(ValueError) as exc_info:
         max_heap.push(7)
-    assert exc_info.value.args[0] == "Full heap" 
+    assert exc_info.value.args[0] == "Full heap"
 
 
 def test_max_heap_pop():

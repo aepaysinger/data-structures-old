@@ -59,8 +59,7 @@ class BinHeap:
             else:
                 self._heapify_down()
 
-
-    def _heapify_up(self): 
+    def _heapify_up(self):
         index = len(self.storage) - 1
         while (
             self._has_parent(index)
@@ -76,7 +75,7 @@ class BinHeap:
             and self._parent_location(index) < self.storage[index]
         ):
             self._swap(self._find_parent_index(index), index)
-            index = self._find_parent_index(index)        
+            index = self._find_parent_index(index)
 
     def pop(self):
         if self.storage == []:
