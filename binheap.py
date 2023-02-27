@@ -6,10 +6,7 @@ class BinHeap:
         if values:
             for value in values:
                 self.storage.append(value)
-                if heap_type == "min":
-                    self._heapify_up()
-                elif heap_type == "max":
-                    self._heapify_down()
+                self._heapify()
 
     def _find_parent_index(self, index):
         return (index - 1) // 2
@@ -30,15 +27,12 @@ class BinHeap:
         return self._find_right_child_index(index) < len(self.storage)
 
     def _parent_location(self, index):
-
         return self.storage[self._find_parent_index(index)]
 
     def _left_child_location(self, index):
-
         return self.storage[self._find_left_child_index(index)]
 
     def _right_child_location(self, index):
-
         return self.storage[self._find_right_child_index(index)]
 
     def _full_heap(self):
@@ -54,28 +48,31 @@ class BinHeap:
             raise ValueError("Full heap")
         else:
             self.storage.append(value)
-            if self.heap_type == "min":
-                self._heapify_up()
-            else:
-                self._heapify_down()
+            self._heapify()
 
-    def _heapify_up(self):
+    def _heapify(self):
         index = len(self.storage) - 1
-        while (
-            self._has_parent(index)
-            and self._parent_location(index) > self.storage[index]
+        while self._has_parent(index) and (
+            (
+                self.heap_type == "min"
+                and self._parent_location(index) > self.storage[index]
+            )
+            or (
+                self.heap_type == "max"
+                and self._parent_location(index) < self.storage[index]
+            )
         ):
             self._swap(self._find_parent_index(index), index)
             index = self._find_parent_index(index)
 
-    def _heapify_down(self):
-        index = len(self.storage) - 1
-        while (
-            self._has_parent(index)
-            and self._parent_location(index) < self.storage[index]
-        ):
-            self._swap(self._find_parent_index(index), index)
-            index = self._find_parent_index(index)
+    # def _heapify(self):
+    #     index = len(self.storage) - 1
+    #     while (
+    #         self._has_parent(index)
+    #         and self._parent_location(index) < self.storage[index]
+    #     ):
+    #         self._swap(self._find_parent_index(index), index)
+    #         index = self._find_parent_index(index)
 
     def pop(self):
         if self.storage == []:
@@ -83,7 +80,4 @@ class BinHeap:
         else:
             self.storage[0] = self.storage[-1]
             del self.storage[-1]
-            if self.heap_type == "min":
-                self._heapify_up()
-            else:
-                self._heapify_down()
+            self._heapify()
