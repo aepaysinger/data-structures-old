@@ -38,7 +38,7 @@ class BinHeap:
     def _full_heap(self):
         return len(self.storage) == self.max_num_elements
 
-    def _swap(self, index1, index2):
+    def _swap(self, index1, index2):  
         spot_holder = self.storage[index1]
         self.storage[index1] = self.storage[index2]
         self.storage[index2] = spot_holder
@@ -64,15 +64,6 @@ class BinHeap:
         ):
             self._swap(self._find_parent_index(index), index)
             index = self._find_parent_index(index)
-
-    # def _heapify(self):
-    #     index = len(self.storage) - 1
-    #     while (
-    #         self._has_parent(index)
-    #         and self._parent_location(index) < self.storage[index]
-    #     ):
-    #         self._swap(self._find_parent_index(index), index)
-    #         index = self._find_parent_index(index)
 
     def pop(self):
         if self.storage == []:
