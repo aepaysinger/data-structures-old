@@ -27,15 +27,12 @@ class MinHeap:
         return self._find_right_child_index(index) < len(self.storage)
 
     def _parent_location(self, index):
-
         return self.storage[self._find_parent_index(index)]
 
     def _left_child_location(self, index):
-
         return self.storage[self._find_left_child_index(index)]
 
     def _right_child_location(self, index):
-
         return self.storage[self._find_right_child_index(index)]
 
     def _full_heap(self):

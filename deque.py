@@ -3,7 +3,7 @@ class Deque:
         self.items = []
         if values:
             for value in values:
-                self.items.append(value)               
+                self.items.append(value)
 
     def append(self, value):
         self.items.append(value)
@@ -33,8 +33,7 @@ class Deque:
         if len(self.items) == 0:
             return None
         else:
-            return self.items[0]        
+            return self.items[0]
 
     def size(self):
         return len(self.items)
-
