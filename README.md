@@ -35,3 +35,7 @@
   * peek(): returns the next value that would be returned by pop but leaves the value in the deque (returns None if the deque is empty)
   * peekleft(): returns the next value that would be returned by popleft but leaves the value in the deque (returns None if the deque is empty)
   * size(): returns the count of items in the queue (returns 0 if the queue is empty)
+## Priority Queue
+  * insert(value): inserts a value into the queue. Takes an optional argument for that value’s priority, set by default to whatever your lowest priority is (i.e. 0, -99, whatever).
+  * pop(): removes the most important item from the queue and returns its value.
+  * peek(): returns the most important item without removing it from the queue.

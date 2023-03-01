@@ -1,12 +1,12 @@
-class MinHeap:
-    def __init__(self, max_num_elements, values=None):
+class BinHeap:
+    def __init__(self, max_num_elements, heap_type, values=None):
         self.storage = []
         self.max_num_elements = max_num_elements
+        self.heap_type = heap_type
         if values:
             for value in values:
                 self.storage.append(value)
-            self.size = len(self.storage)
-            self._heapify_up()
+                self._heapify()
 
     def _find_parent_index(self, index):
         return (index - 1) // 2
@@ -38,7 +38,7 @@ class MinHeap:
     def _full_heap(self):
         return len(self.storage) == self.max_num_elements
 
-    def _swap(self, index1, index2):
+    def _swap(self, index1, index2):  
         spot_holder = self.storage[index1]
         self.storage[index1] = self.storage[index2]
         self.storage[index2] = spot_holder
@@ -48,13 +48,19 @@ class MinHeap:
             raise ValueError("Full heap")
         else:
             self.storage.append(value)
-            self._heapify_up()
+            self._heapify()
 
-    def _heapify_up(self):
+    def _heapify(self):
         index = len(self.storage) - 1
-        while (
-            self._has_parent(index)
-            and self._parent_location(index) > self.storage[index]
+        while self._has_parent(index) and (
+            (
+                self.heap_type == "min"
+                and self._parent_location(index) > self.storage[index]
+            )
+            or (
+                self.heap_type == "max"
+                and self._parent_location(index) < self.storage[index]
+            )
         ):
             self._swap(self._find_parent_index(index), index)
             index = self._find_parent_index(index)
@@ -65,4 +71,4 @@ class MinHeap:
         else:
             self.storage[0] = self.storage[-1]
             del self.storage[-1]
-            self._heapify_up()
+            self._heapify()

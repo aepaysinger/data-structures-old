@@ -19,7 +19,7 @@ def test_deque_appendleft():
 
 def test_deque_pop():
     deque = Deque([2, 6, 4])
-    
+
     assert deque.pop() == 4
     assert deque.items == [2, 6]
 
