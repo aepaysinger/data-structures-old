@@ -1,5 +1,6 @@
 import bisect
 
+
 class PriorityQueue:
     def __init__(self):
         self.storage = []
@@ -8,9 +9,7 @@ class PriorityQueue:
         if self.storage == []:
             self.storage.append((priority, value))
         elif priority:
-            self.storage.reverse()
-            bisect.insort_right(self.storage, (priority, value))
-            self.storage.reverse()
+            bisect.insort_left(self.storage, (priority, value))
         else:
             self.storage.insert(0, (self.storage[0][0], value))
 
