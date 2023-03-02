@@ -33,7 +33,7 @@ class PriorityQueue:
     def peek(self):
         return self.storage[0]
     
-    def _insert(self, value, priority=0, left=0, right=None):
+    def insert(self, value, priority=0, left=0, right=None):
         if self.storage == []:
             self.storage.append((priority, value))
         else:
@@ -53,9 +53,9 @@ class PriorityQueue:
                 elif self.storage[mid][0] < priority and self.storage[mid + 1][0] > priority:
                     self.storage.insert(mid + 1, (priority, value))
                 elif priority > mid:
-                    return self._insert(self, priority, left, mid)
+                    self.insert(self, priority, left, mid)
                 elif priority < mid:
-                    return self._insert(self, priority, mid, right)
+                    self.insert(self, priority, mid, right)
             else:
                 self.storage.append((self.storage[-1][0], value))
        
