@@ -1,4 +1,5 @@
 from priorityq import PriorityQueue
+import math
 
 
 def test_priority_queue_insert():
@@ -8,11 +9,17 @@ def test_priority_queue_insert():
     priorityq.insert("a", 1)
     priorityq.insert("c", 3)
 
-    assert priorityq.storage == [(3, "c"), (2, "b"), (1, "a"), (-1, "aa")]
+    assert priorityq.storage == [(-1, "aa"), (1, "a"), (2, "b"), (3, "c")]
 
     priorityq.insert("f")
 
-    assert priorityq.storage == [(3, "f"), (3, "c"), (2, "b"), (1, "a"), (-1, "aa")]
+    assert priorityq.storage == [
+        (-math.inf, "f"),
+        (-1, "aa"),
+        (1, "a"),
+        (2, "b"),
+        (3, "c"),
+    ]
 
 
 def test_priority_queue_pop():
@@ -22,8 +29,8 @@ def test_priority_queue_pop():
     priorityq.insert("bravo")
     priorityq.insert(4, 2)
 
-    assert priorityq.pop() == (-3, "alpha")
-    assert priorityq.storage == [(2, 4), (1, "bravo"), (1, 55)]
+    assert priorityq.pop() == (2, 4)
+    assert priorityq.storage == [(-math.inf, "bravo"), (-3, "alpha"), (1, 55)]
 
 
 def test_priority_queue_peek():
@@ -31,6 +38,6 @@ def test_priority_queue_peek():
     priorityq.insert("alpha")
     priorityq.insert("beta")
 
-    assert priorityq.peek() == (0, "alpha")
+    assert priorityq.peek() == (-math.inf, "alpha")
 
-    assert priorityq.storage == [(0, "beta"), (0, "alpha")]
+    assert priorityq.storage == [(-math.inf, "beta"), (-math.inf, "alpha")]
