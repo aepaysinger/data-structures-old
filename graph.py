@@ -23,9 +23,8 @@ class Graph:
 
     def del_node(self, value):
         if value in self.storage:
-            for node in self.storage:
-                if value in self.storage[node]:
-                    self.storage[node].remove(value)
+            for edge in self.storage[value]:
+                self.storage[edge].remove(value)
             del self.storage[value]
         else:
             raise ValueError("Node does not exist")
