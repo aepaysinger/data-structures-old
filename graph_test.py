@@ -25,7 +25,7 @@ def test_add_edge():
     graph.add_edge(4, 8)
     graph.add_edge(9, 81)
 
-    assert graph.storage == {4: [16, 8], 9: [81]}
+    assert graph.storage == {4: [16, 8], 9: [81], 16: [4], 8: [4], 81: [9]}
 
 
 def test_edges():
@@ -34,7 +34,7 @@ def test_edges():
     graph.add_edge(4, 8)
     graph.add_edge(9, 81)
 
-    assert graph.edges() == [[16, 8], [81]]
+    assert graph.edges() == [[16, 8], [4], [4], [81], [9]]
 
 
 def test_delete_node():
@@ -45,7 +45,14 @@ def test_delete_node():
     graph.add_edge(7, 49)
     graph.del_node(4)
 
-    assert graph.storage == {9: [81], 7: [49]}
+    assert graph.storage == {
+        16: [],
+        8: [],
+        9: [81],
+        81: [9],
+        7: [49],
+        49: [7],
+    }
 
     with pytest.raises(ValueError) as exc_info:
         graph.del_node(10)
@@ -69,11 +76,27 @@ def test_delete_edge():
     graph.add_edge(9, 81)
     graph.add_edge(7, 49)
 
-    assert graph.storage == {4: [16, 8], 9: [81], 7: [49]}
+    assert graph.storage == {
+        4: [16, 8],
+        16: [4],
+        8: [4],
+        9: [81],
+        81: [9],
+        7: [49],
+        49: [7],
+    }
 
     graph.del_edge(4, 16)
 
-    assert graph.storage == {4: [8], 9: [81], 7: [49]}
+    assert graph.storage == {
+        4: [8],
+        16: [],
+        8: [4],
+        9: [81],
+        81: [9],
+        7: [49],
+        49: [7],
+    }
 
     with pytest.raises(ValueError) as exc_info:
         graph.del_edge(5, 81)

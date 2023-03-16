@@ -16,19 +16,24 @@ class Graph:
             self.storage[value1].append(value2)
         else:
             self.storage[value1] = [value2]
+        if value2 in self.storage:
+            self.storage[value2].append(value1)
+        else:
+            self.storage[value2] = [value1]
 
     def del_node(self, value):
         if value in self.storage:
+            for node in self.storage:
+                if value in self.storage[node]:
+                    self.storage[node].remove(value)
             del self.storage[value]
         else:
             raise ValueError("Node does not exist")
 
     def del_edge(self, value1, value2):
-        if value1 in self.storage:
-            if value2 in self.storage[value1]:
-                self.storage[value1].remove(value2)
-            else:
-                raise ValueError("Edge does not exist")
+        if value1 in self.storage and value2 in self.storage[value1]:
+            self.storage[value1].remove(value2)
+            self.storage[value2].remove(value1)
         else:
             raise ValueError("Edge does not exist")
 

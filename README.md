@@ -42,8 +42,8 @@
 ## Graph
   * nodes(): return a list of all nodes in the graph
   * edges(): return a list of all edges in the graph
-  * add_node(val): adds a new node with value ‘n’ to the graph
-  * add_edge(val1, val2): adds a new edge to the graph connecting the node containing ‘val1’ and the node containing ‘val2’. If either val1 or val2 are not already present in the graph, they should be added. If an edge already exists, overwrite it.
+  * add_node(val): adds a new node with no value to the graph
+  * add_edge(val1, val2): adds a new edge to the graph connecting the node containing ‘val1’ and the node containing ‘val2’. If either val1 or val2 are not already present in the graph, they should be added.
   * del_node(val): deletes the node containing ‘val’ from the graph; raises an error if no such node exists
   * del_edge(val1, val2): deletes the edge connecting ‘val1’ and ‘val2’ from the graph; raises an error if no such edge exists
   * has_node(val): True if node containing ‘val’ is contained in the graph, False if not.
