@@ -40,6 +40,7 @@
   * pop(): removes the most important item from the queue and returns its value.
   * peek(): returns the most important item without removing it from the queue.
 ## Graph
+  * In this graph only immutable values are to be used
   * nodes(): return a list of all nodes in the graph
   * edges(): return a list of all edges in the graph
   * add_node(val): adds a new node with no value to the graph
