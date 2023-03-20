@@ -52,3 +52,35 @@ class Graph:
             raise ValueError("Value does not exist")
         else:
             return value2 in self.storage[value1]
+
+    def depth_first_traversal(self, start_val):
+        path = [start_val]
+        node_to_check = start_val
+        while len(path) < len(self.storage):
+            for node_to_check in self.storage:
+                for edge in self.storage[node_to_check]:
+                    if edge not in path:
+                        path.append(edge)
+                for edge in self.storage[node_to_check]:
+                    for item in self.storage[edge]:
+                        if item not in path:
+                            node_to_check = item
+        return path
+
+    # def breadth_first_traversal(self, start_val):
+    #     path = [start_val]
+    #     next_to_check = start_val
+    #     while len(path) < len(self.storage):
+    #         for edge in self.storage[next_to_check]:
+    #             path.append(edge)
+            
+
+
+
+
+#{4: [16, 8], 9: [81], 16: [4], 8: [4], 81: [9]}
+graph = Graph()
+graph.add_edge(4, 16)
+graph.add_edge(4, 8)
+graph.add_edge(9, 81)
+print(graph.depth_first_traversal(4))      
