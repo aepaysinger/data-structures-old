@@ -5,7 +5,7 @@ import math
 class PriorityQueue:
     def __init__(self):
         self.storage = []
-
+        
     def insert(self, value, priority=-math.inf):
         if self.storage == []:
             self.storage.append((priority, value))
