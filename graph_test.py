@@ -137,3 +137,14 @@ def test_adjecent():
     with pytest.raises(ValueError) as exc_info:
         graph.adjcent(4, 12)
     assert exc_info.value.args[0] == "Value does not exist"
+
+
+def test_depth_first_traversal():
+    graph = Graph()
+    graph.add_edge(4, 16)
+    graph.add_edge(4, 8)
+    graph.add_edge(9, 81)
+    
+    assert graph.depth_first_traversal(4) == [4, 16, 8, 81, 9]
+
+    
